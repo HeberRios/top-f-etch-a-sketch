@@ -18,10 +18,17 @@ body {
     background-color: #171b26;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
 /* GRID CONTAINER */
 .main-grid-container {
-    width: 90rem;
-    height: 90rem;
+    width: 70rem;
+    height: 70rem;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     justify-items: center;
@@ -35,4 +42,21 @@ body {
     height: 100%;
     background-color: #facb0f;
     cursor: pointer;
+}
+
+/* CUSTOM GRID BUTTON */
+
+.custom-grid-btn {
+    color: #3a55cf;
+    font-weight: 700;
+    background-color: #facb0f;
+    border: none;
+    padding: 2rem;
+    transition: all 0.4s;
+}
+
+.custom-grid-btn:hover {
+    cursor: pointer;
+    background-color: #3a55cf;
+    color: #facb0f;
 }
