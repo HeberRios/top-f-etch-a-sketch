@@ -2,27 +2,52 @@
 
 // SELECTING THE GRID CONTAINER
 const gridContainer = document.getElementById("main-grid-container");
+const initialGridSideSize = 16;
 
-// CREATING THE DIVS WITHIN THE CONTAINER
-for (let i = 0; i < 256; i++) {
-    const div = document.createElement("div");
-    div.classList.add("square");
-    gridContainer.appendChild(div);
+// FUNCTIONS -------------------------------------------------------------
+
+function getNumberOfSquares(gridSideSize) {
+    return gridSideSize * gridSideSize;
 }
 
-// ADDING THE "HOVER" EVENT TO EACH DIV
-const squares = document.querySelectorAll(".square");
+function createSquares(numberOfSquares) {
+    for (let i = 0; i < numberOfSquares; i++) {
+        const div = document.createElement("div");
+        div.classList.add("square");
+        gridContainer.appendChild(div);
+    }
+}
 
-// MOUSEOVER
-squares.forEach((square) => {
-    square.addEventListener("mouseover", function () {
-        square.style.backgroundColor = "#3A55CF";
-    });
-});
+function selectGridSquares() {
+    const squares = document.querySelectorAll(".square");
+    return squares;
+}
 
-// MOUSEOUT
-squares.forEach((square) => {
-    square.addEventListener("mouseout", function () {
-        square.style.backgroundColor = "#DB2B39";
+function addMouseOverEvent(squares) {
+    squares.forEach((square) => {
+        square.addEventListener("mouseover", function () {
+            square.style.backgroundColor = "#3A55CF";
+        });
     });
-});
+}
+
+function addMouseOutEvent(squares) {
+    squares.forEach((square) => {
+        square.addEventListener("mouseout", function () {
+            square.style.backgroundColor = "#DB2B39";
+        });
+    });
+}
+
+function GridCreation(gridSideSize) {
+    const numberOfSquares = getNumberOfSquares(gridSideSize);
+
+    createSquares(numberOfSquares);
+
+    const squares = selectGridSquares();
+
+    addMouseOverEvent(squares);
+    addMouseOutEvent(squares);
+}
+
+GridCreation(initialGridSideSize);
