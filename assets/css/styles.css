@@ -1,7 +1,38 @@
 /* CSS RESET ------------------------------------------------------------- */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* GENERAL STYLING */
+html {
+    font-size: 62.5%;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #171b26;
+}
+
+/* GRID CONTAINER */
+.main-grid-container {
+    width: 90rem;
+    height: 90rem;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    justify-items: center;
+    align-items: center;
+    box-shadow: 0 0 0 1rem #3a55cf;
+    padding: 0.5rem;
+}
+
+.square {
+    width: 100%;
+    height: 100%;
+    background-color: #facb0f;
+    cursor: pointer;
 }
