@@ -1,7 +1,10 @@
 "use strict";
 
-// SELECTING THE GRID CONTAINER
+// SELECTING ELEMENTS
 const gridContainer = document.getElementById("main-grid-container");
+const customGridBtn = document.getElementById("custom-grid-btn");
+
+// INITIAL VALUE FOR THE GRID SIZE
 const initialGridSideSize = 16;
 
 // FUNCTIONS -------------------------------------------------------------
@@ -50,4 +53,42 @@ function GridCreation(gridSideSize) {
     addMouseOutEvent(squares);
 }
 
+function removePreviousGrid(gridContainer) {
+    while (gridContainer.firstChild) {
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+}
+
+function getCustomGridValue() {
+    let newGridSize = prompt(
+        `Type the new size of the grid. (MAX:100 x 100)`,
+        16
+    );
+    if (newGridSize > 100) {
+        newGridSize = 100;
+        return newGridSize;
+    } else if (newGridSize <= 100 && newGridSize > 0) {
+        return newGridSize;
+    } else if (newGridSize < 0) {
+        return 16;
+    }
+}
+
+function newGridLayout(gridSideSize) {
+    gridContainer.style.gridTemplateColumns = `repeat(${gridSideSize}, 1fr)`;
+}
+
+function createCustomGrid() {
+    const newGridSize = getCustomGridValue();
+
+    removePreviousGrid(gridContainer);
+
+    newGridLayout(newGridSize);
+    GridCreation(newGridSize);
+}
+
+// INITIAL GRID CREATION
 GridCreation(initialGridSideSize);
+
+// CUSTOM GRID CREATION
+customGridBtn.addEventListener("click", createCustomGrid);
