@@ -42,6 +42,30 @@ function addMouseOutEvent(squares) {
     });
 }
 
+// ALTERNATIVE FUNCTIONALITY, HOLD CLICK AND DRAG MOUSE ------------------
+function pixelTrail(element) {
+    if (element.buttons === 1) {
+        if (element.target.classList == "square") {
+            let square = element.target;
+            square.style.backgroundColor = "#DB2B39";
+        } else {
+            return;
+        }
+    }
+}
+
+function addEventListenersToGridContainer() {
+    gridContainer.addEventListener("mousedown", (event) => {
+        pixelTrail(event);
+        if (event.buttons === 1) {
+            window.addEventListener("mouseover", (event) => {
+                pixelTrail(event);
+            });
+        }
+    });
+}
+// -----------------------------------------------------------------------
+
 function GridCreation(gridSideSize) {
     const numberOfSquares = getNumberOfSquares(gridSideSize);
 

@@ -42,6 +42,7 @@ main {
     height: 100%;
     background-color: #facb0f;
     cursor: cell;
+    border: .1rem solid black;
 }
 
 /* CUSTOM GRID BUTTON */
